@@ -185,10 +185,9 @@ args = parser.parse_args()
 block = BLOCK_DEF[args.block_type]
 shape = args.shape + [1]
 
-results = []
-print ("Benchmarking", args.block_type, "on filters count", args.filters)
-for filters in args.filters:
 
+
+def eval_model(block, filters, args):
     model = make_model(
         [
             # expand 1-channel input to filters
@@ -206,9 +205,13 @@ for filters in args.filters:
         save(model, "tmp.tflite", shape)
         os.system("rm tmp_edgetpu.tflite")
         os.system("edgetpu_compiler tmp.tflite > /dev/null")
-        res = benchmark("tmp_edgetpu.tflite") * 1000000 / args.repeat
+        return benchmark("tmp_edgetpu.tflite") * 1000000 / args.repeat
     except Exception as e:
         print(e)
-        res = "-"
+
+results = []
+print ("Benchmarking", args.block_type, "on filters count", args.filters)
+for filters in args.filters:
+    res = eval_model(block, filters, args)
     results.append(res)
-print(", ".join(str(x) for x in results))
+print(", ".join("-" if x is None else "%.1f" % x for x in results))
