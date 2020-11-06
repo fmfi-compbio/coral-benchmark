@@ -37,4 +37,9 @@ Coral has currently some weird problems on USB3 (https://github.com/google-coral
 It seems that this benchmark is quite good at triggering it :-)
 If you come across this problem on linux:
 1) find your usb hub device id using `lspci` (e.g. something like `00:14.0 USB controller: ...`)
-2) hard-reset USB hub: `echo "0000:00:14.0" > /sys/bus/pci/drivers/xhci_hcd/unbind ;echo "0000:00:14.0" > /sys/bus/pci/drivers/xhci_hcd/bind`. Note that simple unplugging and plugging device back does help
+2) hard-reset USB hub:
+  ```
+  echo "0000:00:14.0" > /sys/bus/pci/drivers/xhci_hcd/unbind
+  echo "0000:00:14.0" > /sys/bus/pci/drivers/xhci_hcd/bind
+  ```
+  Note that simple unplugging and plugging device back does not help
