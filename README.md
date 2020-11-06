@@ -30,7 +30,7 @@ Benchmarking depthwise on filters count [96, 112, 128, 144, 156, 196, 224, 256, 
 50.5, 56.0, 61.5, 66.6, 70.6, 84.2, 93.1, 180.9, 211.4
 ```
 
-This indicates that Coral takes roughly 61.5-17.9 = ~44us to run 5x128 convolution on tensor 4x1668x128.
+This indicates that Coral takes roughly 61.5-17.9 = ~44us to run 128x5->128 convolution on tensor 4x1668x128.
 
 ## Pro tips:
 Coral has currently some weird problems on USB3 (https://github.com/google-coral/edgetpu/issues/207) where it might run out of bandwidth reservation. 
