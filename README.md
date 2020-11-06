@@ -1,4 +1,4 @@
-# Benchmark inferences speed of tensors on Coral Edge TPU
+# Benchmark inference speed of tensors on Coral Edge TPU
 
 ## Installation
 TODO
