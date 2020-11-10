@@ -1,7 +1,9 @@
 # Benchmark inference speed of tensors on Coral Edge TPU
 
 ## Installation
-TODO
+
+- Install tensorflow >=2.3 (we used 2.4 nightly) - `pip install tensorflow-gpu`
+- Install Coral SDK and compiler: `edgetpu-compiler`, `libedgetpu1-max` from https://coral.ai/software/#debian-packages 
 
 ## Usage
 
